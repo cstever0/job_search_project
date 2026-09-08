@@ -1,0 +1,53 @@
+Cory Stever
+P. 816-345-5294 | cstever@hotmail.com | LinkedIn: Cory Stever | Github: cstever0 | Kansas City, MO
+
+PROFESSIONAL SUMMARY
+Full stack software engineer skilled in JavaScript, React / Redux, Python as well as several other languages and frameworks. Experienced in sales, supply chain analysis with a Bachelor's Degree in Political Science allowing me to bring a unique problem solving perspective to a team. Passionate about learning and creating innovative products that improve the quality of life for others.
+
+TECHNICAL SKILLS
+- Languages & Frameworks: JavaScript, Express.js, React.js, Redux, Python, Flask, SQLAlchemy, SQL, PostgreSQL, Node.js, HTML, CSS, R
+- Cloud & Tools: AWS, Git, GitHub, RESTful APIs, Scrum/Agile
+- AI & Machine Learning: PyTorch, Hugging Face, BERT, Transformers, LoRA/PEFT, NLP, Deep Learning, Machine Learning, Agentic AI, Tokenization, AdamW optimization
+
+PROJECTS
+FantasyBnB | Github: cstever0
+This project is a clone of AirBnB using Express.js, JavaScript, and React / Redux
+- Implemented an Express.js back end with user authentication, RESTful API endpoints, and many to many relationships to fully optimize the handling of dataflow and filter user input.
+- Established a React/Redux front end using the store by dispatching actions and sharing data across reusable components to create maintainable, DRY code and ensure reliable DOM rendering.
+- Integrated custom CSS and JavaScript to optimize the user interface, improving both aesthetic appeal and user interface (UI) accessibility.
+
+Query | Github: cstever0
+This project is a clone of Quora using Python, Flask, SQLAlchemy, JavaScript, and React / Redux
+- Cooperated with a team of software engineers utilizing GitHub and a single repository with a Scrum/Agile workflow with multiple branches to maintain constant availability of the production model application.
+- Created a Flask / SQLAlchemy back end with user authentication, RESTful API endpoints, and many to many relationships to fully optimize the handling of dataflow and filter user input.
+- Established a React / Redux front end to manage complex state with predictable state changes, enabling the development of a large-scale, high-performance application with maintainable code and reusable components.
+
+RememberAll | Github: cstever0
+This project is a clone of Todoist using Python, Flask, SQLAlchemy, JavaScript, and React / Redux
+- Initialized the backend as a Flask / SQLAlchemy framework with user authentication, RESTful API endpoints, and many to many relationships to fully optimize the handling of dataflow and filter user input.
+- Combined CSS and JavaScript to create dynamic UI tools and implemented CSS id and class selectors to apply styles globally and create DRY code for ease of maintenance and to enhance User Experience (UX) for all available viewports.
+- Constructed a React / Redux front end to manage complex state with predictable state changes, dispatching actions in response to user input and sharing data across components in order to optimize DOM rendering for User Experience.
+
+WORK EXPERIENCE
+IT Support & Maintenance | Stonewood Granite | 2024 - 2026
+- Handled all IT related issues, network hardware, and continuous website maintenance.
+- Ensured system uptime and technical support across company operations.
+
+Web Developer | StoneWood Granite | Contract - Sep 2023
+- Collaborated to create a low-code web application for an image gallery of products to display hundreds of images that are easy to navigate by touch or with a mouse.
+- Trained team on how to maintain a basic application using a cloud-based web development service as well as update any product images for new stock and keep the live application available for customers.
+- Assembled a hand made mounting system for a display using an HDMI splitter to spread a single image across four screens and a wireless interface for customers to view life-size, hi-definition images of products.
+
+Legal Assistant | CDL Legal | Apr 2022 - Sep 2022
+- Responsible for managing and overseeing the legal cases of at least 100 customers' legal disputes every week with the Department of Transportation.
+- Communicated to dozens of customers each day the processes that would be used to resolve their case and notified them of the details when I had resolved their legal dispute with the state.
+- Managed court dates for over 100 legal offices across all 50 states and Washington D.C. and provided any documentation necessary for thousands of counties' court clerks, prosecuting attorneys, and judges.
+
+EDUCATION
+University of Missouri - Kansas City | Master of Science in Computer Science - Graduate (Concentration: AI) | Expected Dec 2026
+- Focus on Artificial Intelligence, Machine Learning, Deep Learning, and NLP.
+
+App Academy | Immersive software development course with focus on full stack web development | Summer 2023
+- Intensive full-stack engineering curriculum covering JavaScript, React, Redux, Python, Flask, SQL, and data structures.
+
+University Missouri @ Kansas City | Bachelor's of Arts and Science - Political Science | Spring 2016
