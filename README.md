@@ -103,7 +103,7 @@ $$\text{Overall Score} = S_{\text{skills}} + S_{\text{experience}} + S_{\text{ed
 
 ### 1. Clone or Open the Repository
 ```bash
-cd "your/directory/location
+cd "your/directory/location"
 ```
 
 ### 2. Create and Activate Virtual Environment
