@@ -167,7 +167,7 @@ http://localhost:8501
 
 ## 🖥️ User Interface Overview
 
-The Streamlit interface includes six primary tabs:
+The Streamlit interface includes seven primary tabs:
 
 1. **👤 Profile & Career Data:**
    - Upload personal career documents (**PDF, DOCX, TXT**).
@@ -187,10 +187,14 @@ The Streamlit interface includes six primary tabs:
    - Detailed citations for matched qualifications with source document, section, and chunk ID.
    - Separation of **Missing Job Requirements** from **Skills That Could Improve Competitiveness**.
    - Interactive **Human Feedback** form (`Interested`, `Good Match`, `Applied`, etc.) saved locally.
-5. **🔎 Personal RAG Explorer:**
+5. **📊 In-Demand Skills & Education Summary:**
+   - Aggregates the most sought-after employer skills and O*NET technology tools across all retrieved jobs.
+   - Summarizes education credential demand: degree level distribution (Ph.D. vs. Master's vs. Bachelor's) and top disciplines (Computer Science, Data Science, Math/Stats).
+   - Interactive candidate skill alignment and gap analysis highlighting verified possessed skills vs. top high-value skill gaps.
+6. **🔎 Personal RAG Explorer:**
    - Query your career database with arbitrary technical phrases.
    - Test BM25 keyword matching and vector similarity side-by-side with Reciprocal Rank Fusion.
-6. **⚙️ Settings & System Status:**
+7. **⚙️ Settings & System Status:**
    - Real-time API connection checks for USAJOBS and O*NET.
    - Documentation of fixed matching weights.
    - History log of candidate feedback.

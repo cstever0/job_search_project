@@ -28,6 +28,7 @@ from src.ui.tabs.profile_tab import render_profile_tab
 from src.ui.tabs.results_tab import render_results_tab
 from src.ui.tabs.search_tab import render_search_tab
 from src.ui.tabs.settings_tab import render_settings_tab
+from src.ui.tabs.skills_education_tab import render_skills_education_tab
 
 st.set_page_config(
     page_title="Personal AI Job Search & Matching",
@@ -157,6 +158,7 @@ def main() -> None:
         "🔍 Job Search",
         "🏆 Recommended Jobs",
         "🔬 Job Details & Evidence",
+        "📊 In-Demand Skills & Education",
         "🔎 Personal RAG Explorer",
         "⚙️ Settings & System Status",
     ]
@@ -179,9 +181,17 @@ def main() -> None:
         render_details_tab(evaluations, feedback_store)
 
     with tabs[4]:
-        render_evidence_tab(retriever)
+        jobs_to_analyze = (
+            [e.job for e in evaluations]
+            if evaluations
+            else usajobs_service.search_jobs(keyword="AI Data Scientist Machine Learning")
+        )
+        render_skills_education_tab(jobs_to_analyze, profile, retriever.vector_store.chunks)
 
     with tabs[5]:
+        render_evidence_tab(retriever)
+
+    with tabs[6]:
         render_settings_tab(feedback_store)
 
 
