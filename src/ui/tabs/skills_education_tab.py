@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Any, Optional
 import pandas as pd
 import streamlit as st
 from src.matching.analytics import MarketSkillsEducationAnalyzer
@@ -14,6 +15,7 @@ def render_skills_education_tab(
     jobs: list[NormalizedJob],
     profile: CandidateProfile,
     chunks: list[Any] = None,
+    onet_service: Optional[Any] = None,
 ) -> None:
     """Render the skills and education market intelligence summary."""
     st.header("📊 Most Sought-After Skills & Education Summary")
@@ -22,10 +24,21 @@ def render_skills_education_tab(
         "to analyze market demand and identify your competitive advantages and skill development areas."
     )
 
+    if not onet_service:
+        from src.services.onet_service import ONetService
+        onet_service = ONetService()
+
     if not jobs:
-        # Provide sample jobs from USAJOBS service if none evaluated yet
         from src.services.usajobs_service import USAJobsService
         jobs = USAJobsService().search_jobs(keyword="AI Data Scientist Software")
+
+    # Ensure all jobs are actively enriched with O*NET occupational and technology data
+    for j in jobs:
+        if not j.onet_code or not j.onet_technology_skills or not j.onet_occupational_skills:
+            try:
+                onet_service.enrich_job(j)
+            except Exception:
+                pass
 
     summary = MarketSkillsEducationAnalyzer.generate_market_summary(jobs, profile, chunks)
     skills_data = summary["skills"]
@@ -77,18 +90,28 @@ def render_skills_education_tab(
             df_req = pd.DataFrame(req_items, columns=["Skill", "Job Postings"])
             st.bar_chart(df_req.set_index("Skill"), color="#2563EB", horizontal=True)
         else:
-            st.write("No explicit skill counts available.")
+            st.info("No employer skills explicitly extracted from current search filter.")
 
     with col_onet:
-        st.markdown(f"#### 🌐 O*NET Technology Skills {render_provenance_badge('O*NET OCCUPATIONAL INFORMATION')}", unsafe_allow_html=True)
-        st.caption("Commonly used across standard occupational classifications:")
+        st.markdown(f"#### 🌐 O*NET Occupational Skills & Technologies {render_provenance_badge('O*NET OCCUPATIONAL INFORMATION')}", unsafe_allow_html=True)
+        st.caption("Skills commonly associated with these occupations in federal taxonomy:")
 
-        onet_tech = skills_data["top_onet_tech_skills"]
-        if onet_tech:
-            df_onet = pd.DataFrame(onet_tech, columns=["Technology", "Occupations"])
-            st.bar_chart(df_onet.set_index("Technology"), color="#059669", horizontal=True)
-        else:
-            st.write("No O*NET technology skills available.")
+        onet_tab1, onet_tab2 = st.tabs(["Tools & Technologies", "Core Competencies"])
+        with onet_tab1:
+            onet_tech = skills_data["top_onet_tech_skills"]
+            if onet_tech:
+                df_onet_tech = pd.DataFrame(onet_tech, columns=["Technology", "Occupations"])
+                st.bar_chart(df_onet_tech.set_index("Technology"), color="#059669", horizontal=True)
+            else:
+                st.info("No O*NET technology skills recorded.")
+
+        with onet_tab2:
+            onet_comp = skills_data.get("top_onet_competencies", [])
+            if onet_comp:
+                df_onet_comp = pd.DataFrame(onet_comp, columns=["Competency", "Frequency"])
+                st.bar_chart(df_onet_comp.set_index("Competency"), color="#0D9488", horizontal=True)
+            else:
+                st.info("No O*NET competencies recorded.")
 
     st.markdown("---")
 

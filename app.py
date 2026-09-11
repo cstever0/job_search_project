@@ -108,6 +108,7 @@ def main() -> None:
     profile: CandidateProfile = st.session_state["profile"]
     retriever: HybridCareerRetriever = st.session_state["retriever"]
     usajobs_service: USAJobsService = st.session_state["usajobs_service"]
+    onet_service: ONetService = st.session_state["onet_service"]
     job_ranker: JobRanker = st.session_state["job_ranker"]
     feedback_store: FeedbackStore = st.session_state["feedback_store"]
     evaluations = st.session_state.get("evaluations", [])
@@ -186,7 +187,19 @@ def main() -> None:
             if evaluations
             else usajobs_service.search_jobs(keyword="AI Data Scientist Machine Learning")
         )
-        render_skills_education_tab(jobs_to_analyze, profile, retriever.vector_store.chunks)
+        # Ensure all jobs are enriched with O*NET data so occupational skills are available
+        for j in jobs_to_analyze:
+            if not j.onet_code or not j.onet_technology_skills:
+                try:
+                    onet_service.enrich_job(j)
+                except Exception:
+                    pass
+        render_skills_education_tab(
+            jobs_to_analyze,
+            profile,
+            retriever.vector_store.chunks,
+            onet_service=onet_service,
+        )
 
     with tabs[5]:
         render_evidence_tab(retriever)
